@@ -23,10 +23,28 @@ public class VenueTest {
   }
 
   @Test
-  public void Venue_getIdCorrectly_int(){
+  public void all_emptyAtFirst() {
+    assertEquals(Venue.all().size(), 0);
+  }
+
+  @Test
+  public void save_savesIntoDatabase_true() {
     Venue myVenue = new Venue("Crystal Ballroom");
     myVenue.save();
-    assertEquals(1, myVenue.getId());
-   }
+    assertTrue(Venue.all().get(0).equals(myVenue));
+  }
+
+  @Test
+  public void Venue_getIdCorrectly_int(){
+    Venue myVenue = new Venue("Crystal Ballroom");
+    assertEquals(0, myVenue.getId());
+  }
+
+ @Test
+  public void Venue_getTwoSameLocation_true(){
+    Venue firstVenue = new Venue("Crystal Ballroom");
+    Venue secondVenue = new Venue("Crystal Ballroom");
+    assertTrue(secondVenue.equals(firstVenue));
+  }
 
  }

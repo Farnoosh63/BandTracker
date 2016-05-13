@@ -36,4 +36,15 @@ public class Venue {
         .getKey();
     }
   }
+
+@Override
+  public boolean equals(Object secondVenue) {
+    if(!(secondVenue instanceof Venue)){
+      return false;
+    }else {
+      Venue newVenue = (Venue) secondVenue;
+      return this.getName().equals(newVenue.getName()) &&
+      this.getId() == newVenue.getId();
+    }
+  }
 }

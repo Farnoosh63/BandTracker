@@ -23,10 +23,28 @@ public class BandTest {
    }
 
    @Test
-   public void Band_getIdCorrectly_int(){
-     Band myBand = new Band("The Beatles");
-     myBand.save();
-     assertEquals(1, myBand.getId());
-    }
+   public void all_emptyAtFirst() {
+    assertEquals(Band.all().size(), 0);
+   }
+
+ @Test
+   public void save_savesIntoDatabase_true() {
+    Band myBand = new Band("The Beatles");
+    myBand.save();
+    assertTrue(Band.all().get(0).equals(myBand));
+   }
+
+ @Test
+  public void Band_getIdCorrectly_int(){
+    Band myBand = new Band("The Beatles");
+    assertEquals(0, myBand.getId());
+  }
+
+  @Test
+  public void Band_getTwoSameLocation_true(){
+    Band firstBand = new Band("The Beatles");
+    Band secondBand = new Band("The Beatles");
+    assertTrue(secondBand.equals(firstBand));
+   }
 
 }

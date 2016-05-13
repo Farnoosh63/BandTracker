@@ -7,6 +7,7 @@ public class Band {
   private int id;
   private String name;
 
+
   public Band(String name) {
     this.name = name;
   }
@@ -33,6 +34,17 @@ public class Band {
         .addParameter("name", this.name)
         .executeUpdate()
         .getKey();
+    }
+  }
+
+  @Override
+  public boolean equals(Object secondBand) {
+    if(!(secondBand instanceof Band)){
+      return false;
+    }else {
+      Band newBand = (Band) secondBand;
+      return this.getName().equals(newBand.getName()) &&
+      this.getId() == newBand.getId();
     }
   }
 }
