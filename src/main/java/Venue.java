@@ -26,4 +26,14 @@ public class Venue {
       return con.createQuery(sql).executeAndFetch(Venue.class);
     }
   }
+
+  public void save() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "INSERT INTO venues (location) VALUES (:location)";
+      this.id = (int) con.createQuery(sql,true)
+        .addParameter("location", this.location)
+        .executeUpdate()
+        .getKey();
+    }
+  }
 }

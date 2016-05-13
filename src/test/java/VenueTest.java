@@ -22,4 +22,11 @@ public class VenueTest {
    assertEquals("Crystal Ballroom", myVenue.getName());
   }
 
+  @Test
+  public void Venue_getIdCorrectly_int(){
+    Venue myVenue = new Venue("Crystal Ballroom");
+    myVenue.save();
+    assertEquals(1, myVenue.getId());
+   }
+
  }

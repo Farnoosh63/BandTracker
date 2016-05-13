@@ -22,4 +22,11 @@ public class BandTest {
     assertEquals("The Beatles", myBand.getName());
    }
 
+   @Test
+   public void Band_getIdCorrectly_int(){
+     Band myBand = new Band("The Beatles");
+     myBand.save();
+     assertEquals(1, myBand.getId());
+    }
+
 }
