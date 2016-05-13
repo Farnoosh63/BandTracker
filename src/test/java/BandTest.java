@@ -54,4 +54,12 @@ public class BandTest {
     assertTrue(Band.all().get(0).equals(myBand));
   }
 
+  @Test
+  public void Band_getNamefindIntoDB_true() {
+    Band myBand = new Band("The Beatles");
+    myBand.save();
+    Band savedBand = Band.find(myBand.getId());
+    assertTrue(myBand.equals(savedBand));
+  }
+
 }

@@ -56,7 +56,7 @@ This website is designed with bootstrap _version 3.3.6_ and including following 
 * CREATE DATABASE band_tracker;
 * connect to database
 * CREATE TABLE bands (id serial PRIMARY KEY, name varchar);
-* CREATE TABLE venues (id serial PRIMARY KEY, location varchar, bandid int);
+* CREATE TABLE venues (id serial PRIMARY KEY, location varchar);
 * Development DATABASE: CREATE DATABASE band_tracker_test WITH TEMPLATE band_tracker;
 * to restore DATABASE in terminal: $psql band_tracker < band_tracker.sql
 
