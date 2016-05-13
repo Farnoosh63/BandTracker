@@ -3,7 +3,6 @@ import org.sql2o.*;
 import java.util.Arrays;
 import java.util.ArrayList;
 
-
 public class Band {
   private int id;
   private String name;
@@ -20,5 +19,10 @@ public class Band {
     return id;
   }
 
-  
+  public static List<Band>all() {
+    String sql = "SELECT * FROM bands";
+    try(Connection con = DB.sql2o.open()) {
+      return con.createQuery(sql).executeAndFetch(Band.class);
+    }
+  }
 }
