@@ -9,10 +9,17 @@ public class BandTest {
   @Rule
   public DatabaseRule database = new DatabaseRule();
 
+
   @Test
   public void Band_instantiatesCorrectlt_true() {
     Band myBand = new Band("The Beatles");
     assertEquals(true, myBand instanceof Band);
   }
-  
+
+  @Test
+  public void Band_getNameCorrectly_String(){
+    Band myBand = new Band("The Beatles");
+    assertEquals("The Beatles", myBand.getName());
+   }
+
 }
