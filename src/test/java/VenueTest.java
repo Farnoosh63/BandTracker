@@ -47,4 +47,19 @@ public class VenueTest {
     assertTrue(secondVenue.equals(firstVenue));
   }
 
+  @Test
+  public void Venue_getNameSaveIntoDB_true() {
+    Venue myVenue = new Venue("Crystal Ballroom");
+    myVenue.save();
+    assertTrue(Venue.all().get(0).equals(myVenue));
+  }
+
+  // @Test
+  // public void Venue_getNameSaveIntoDB_true() {
+  //   Venue myVenue = new Venue("Crystal Ballroom");
+  //   myVenue.save();
+  //   Venue savedVenue = Venue.find(myVenue.getId());
+  //   assertTrue(savedVenue.getId(), myVenue.getId());
+  // }
+
  }
