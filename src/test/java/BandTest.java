@@ -14,3 +14,4 @@ public class BandTest {
     Band myBand = new Band("The Beatles");
     assertEquals(true, myBand instanceof Band);
   }
+}

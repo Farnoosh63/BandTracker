@@ -11,3 +11,4 @@ public class Venue {
   public Venue(String location){
     this.location = location;
   }
+}
