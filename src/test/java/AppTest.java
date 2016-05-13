@@ -49,4 +49,13 @@ public class AppTest extends FluentTest {
     assertThat(pageSource()).contains("Crystal Ballroom");
   }
 
+  @Test
+  public void manageBandPage() {
+    Band bandName = new Band ("The Beatles");
+    bandName.save();
+    String url = String.format("http://localhost:4567/addBand/%d", bandName.getId());
+    goTo(url);
+    assertThat(pageSource()).contains("Manage your Band Account");
+  }
+
 }
