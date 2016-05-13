@@ -57,4 +57,28 @@ public class Band {
       return band;
     }
   }
+
+  public void update(String newBand) {
+  try(Connection con = DB.sql2o.open()) {
+    String sql = "UPDATE bands SET name = :name WHERE id = :id";
+    con.createQuery(sql)
+      .addParameter("name", newBand)
+      .addParameter("id", this.id)
+      .executeUpdate();
+  }
+}
+
+  public void delete() {
+    try(Connection con = DB.sql2o.open()) {
+      String deleteQuery = "DELETE FROM bands WHERE id = :id;";
+      con.createQuery(deleteQuery)
+        .addParameter("id", this.getId())
+        .executeUpdate();
+
+      String joinDeleteQuery = "DELETE FROM bands_venues WHERE bandid = :bandid";
+        con.createQuery(joinDeleteQuery)
+          .addParameter("bandid", this.getId())
+          .executeUpdate();
+    }
+  }
 }

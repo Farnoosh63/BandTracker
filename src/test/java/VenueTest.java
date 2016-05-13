@@ -62,4 +62,13 @@ public class VenueTest {
     assertTrue(myVenue.equals(savedVenue));
   }
 
+  @Test
+  public void Venue_updateBand_String() {
+    Venue myVenue = new Venue("Crystal Ballroom");
+    myVenue.save();
+    myVenue.update("crystal ballroom");
+    assertEquals("crystal ballroom", Venue.find(myVenue.getId()).getName());
+  }
+
+
  }
