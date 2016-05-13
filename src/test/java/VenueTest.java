@@ -63,11 +63,20 @@ public class VenueTest {
   }
 
   @Test
-  public void Venue_updateBand_String() {
+  public void Venue_updateVenue_String() {
     Venue myVenue = new Venue("Crystal Ballroom");
     myVenue.save();
     myVenue.update("crystal ballroom");
     assertEquals("crystal ballroom", Venue.find(myVenue.getId()).getName());
+  }
+
+  @Test
+  public void Venue_DeleteVenue_null() {
+    Venue myVenue = new Venue("Crystal Ballroom");
+    myVenue.save();
+    int id = myVenue.getId();
+    myVenue.delete();
+    assertEquals(null, Venue.find(id));
   }
 
 

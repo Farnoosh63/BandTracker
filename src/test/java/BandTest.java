@@ -70,4 +70,13 @@ public class BandTest {
     assertEquals("beatles", Band.find(myBand.getId()).getName());
   }
 
+  @Test
+  public void Band_DeleteBand_null() {
+    Band myBand = new Band("The Beatles");
+    myBand.save();
+    int id = myBand.getId();
+    myBand.delete();
+    assertEquals(null, Band.find(id));
+  }
+
 }
