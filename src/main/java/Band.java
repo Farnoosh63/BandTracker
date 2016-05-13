@@ -81,4 +81,34 @@ public class Band {
           .executeUpdate();
     }
   }
+
+  public void addVenue(Venue venue) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "INSERT INTO bands_venues (bandid, venueid) VALUES (:bandid, :venueid)";
+      con.createQuery(sql)
+      .addParameter("venueid", venue.getId())
+      .addParameter("bandid", this.getId())
+      .executeUpdate();
+    }
+  }
+
+  public List<Venue> getVenue() {
+    try(Connection con = DB.sql2o.open()){
+     String joinQuery = "SELECT venueid FROM bands_venues WHERE bandid = :bandid";
+     List<Integer> venueIds = con.createQuery(joinQuery)
+       .addParameter("bandid", this.getId())
+       .executeAndFetch(Integer.class);
+
+     List<Venue> venues = new ArrayList<Venue>();
+
+     for (Integer venueId : venueIds) {
+       String venueQuery = "Select * From venues WHERE id = :venueid";
+       Venue venue = con.createQuery(venueQuery)
+         .addParameter("venueid", venueId)
+         .executeAndFetchFirst(Venue.class);
+       venues.add(venue);
+     }
+     return venues;
+   }
+ }
 }
