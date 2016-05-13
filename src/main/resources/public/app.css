@@ -8,3 +8,25 @@ footer {
 ul {
   list-style: none;
 }
+
+.container .text-muted {
+  margin:20px 0;
+}
+
+body {
+  margin: 0;
+  display: block;
+  margin-bottom: 60px;
+  line-height: 200%;
+}
+
+.text-muted {
+  color: #777;
+}
+
+body {
+  margin: 0;
+  display: block;
+  margin-bottom: 60px;
+  line-height: 200%;
+}
