@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h5>Add a category to this recipe:</h5>
+
+    <form action='/addVenueToBand' method='post'>
+      <div class="checkbox">
+        <input id="bandId" name="bandId" type="hidden" value="$band.getId()">
+        <label for="venueId">Select a Venue</label>
+        #if($allVenues)
+          <ul>
+            #foreach($venue in $allVenues)
+              <li><input type="checkbox" value="$venue.getId()" id='venueId' name='venueId'>
+                $venue.getName()
+              </li>
+            #end
+          </ul>
+        #end
+        <button type="submit" id="addVenueToBand" class="btn btn-info">Add venue to this $band.getName()</button>
+      </div>
+    </form>
+    <a href="/recipes" type="button" class="btn btn-success">Go back to band</a></p>
+    <br><br/>
+    <a href="/manageBand">Go back to Manage Band</a>
+  </body>
+</html>

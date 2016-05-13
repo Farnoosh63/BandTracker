@@ -2,20 +2,41 @@
 <html>
   <body>
     <h1>Brand Tracker App</h1>
-
-    <form action="/addBand" method="post">
-      <label for="name">Band name: </label>
-      <input id="name" name="name" type="text">
-      <a href="/addBand" class="btn btn-warning" role="button">Add a Band</a>
-    </form>
+    <div class = "container">
+      <div class= "row">
+        <div class ="col-lg-6">
+          <form action="/addBand" method="post">
+            <label for="name">Band name: </label>
+            <input id="name" name="name" type="text" required="please enter a band name">
+            <a href="/addBand" class="btn btn-warning" role="button">Add a Band</a>
+          </form>
+          <ul>
+            #if($bands)
+              #foreach ($band in $bands)
+              <li><a href="/addBand/$band.getId()">$band.getName()</a></li>
+              #end
+            #end
+          </ul>
+        </div>
 
     <br><br/>
 
-    <form action="/addVenue" method="post">
-      <label for="location">Recipe name</label>
-      <input id="location" name="location" type="text">
-      <a href="/addVenue" class="btn btn-warning" role="button">Add a Venue</a>
-    </form>
-
+        <div class ="col-lg-6">
+          <form action="/addVenue" method="post">
+            <label for="location">Recipe name</label>
+            <input id="location" name="location" type="text" required="please enter a venue location">
+            <a href="/addVenue" class="btn btn-warning" role="button">Add a Venue</a>
+          </form>
+          <ul>
+            #if($venues)
+              #foreach ($venue in $venues)
+              <li><a href="/addVenue/$venue.getId()">$venue.getName()</a></li>
+              #end
+            #end
+          </ul>
+        </div>
+      </div>
+    </div>
+    <a href="/search" class="btn btn-info" role="button">search</a>
   </body>
 </html>

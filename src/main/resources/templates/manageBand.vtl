@@ -10,7 +10,14 @@
 
     <button type="submit" class="btn btn-info" id="editBandName">Edit Band Name</button>
   </form>
+
+  <h3>would you like to add a venue to this band? it is easier that ever!</h3>
+  <a href="/addVenueToBand/$band.getId()" class="btn btn-warning" role="button">Add Venue to $band.getName()</a>
+
   <h3>Sorry to see you are deleting your band from the App. Hope to see you back soon!</h3>
   <a href="/addBand/$band.getId()/delete" class="btn btn-danger" role="button">GoodBye $band.getName()</a>
+  <br><br/>
+  <a href="/">Go back Home</a>
 </body>
+
 </html>
