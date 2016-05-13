@@ -86,7 +86,7 @@ public class VenueTest {
     Band myBand = new Band("The Beatles");
     myBand.save();
     myVenue.addBand(myBand);
-    Venue savedVenue = myBand.getVenue().get(0);
+    Venue savedVenue = myBand.getVenues().get(0);
     assertTrue(savedVenue.equals(myVenue));
   }
 

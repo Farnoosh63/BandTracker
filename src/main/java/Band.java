@@ -92,7 +92,7 @@ public class Band {
     }
   }
 
-  public List<Venue> getVenue() {
+  public List<Venue> getVenues() {
     try(Connection con = DB.sql2o.open()){
      String joinQuery = "SELECT venueid FROM bands_venues WHERE bandid = :bandid";
      List<Integer> venueIds = con.createQuery(joinQuery)

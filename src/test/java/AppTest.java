@@ -29,4 +29,24 @@ public class AppTest extends FluentTest {
     assertThat(pageSource()).contains("Brand Tracker App");
   }
 
+  @Test
+  public void addBand() {
+    goTo("http://localhost:4567/");
+    fill("#name").with ("The Beatles");
+    submit("#addBand");
+    String url = String.format("http://localhost:4567/");
+    goTo(url);
+    assertThat(pageSource()).contains("The Beatles");
+  }
+
+  @Test
+  public void addVenue() {
+    goTo("http://localhost:4567/");
+    fill("#location").with ("Crystal Ballroom");
+    submit("#addVenue");
+    String url = String.format("http://localhost:4567/");
+    goTo(url);
+    assertThat(pageSource()).contains("Crystal Ballroom");
+  }
+
 }

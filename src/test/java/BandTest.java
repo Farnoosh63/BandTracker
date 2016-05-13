@@ -79,4 +79,18 @@ public class BandTest {
     assertEquals(null, Band.find(id));
   }
 
+  @Test
+  public void Band_getBandNameReturnAllVenues_List() {
+    Band myBand = new Band("The Beatles");
+    myBand.save();
+    Venue firstVenue = new Venue("Crystal Ballroom");
+    firstVenue.save();
+    Venue secondVenue = new Venue("Moda Center");
+    secondVenue.save();
+    myBand.addVenue(firstVenue);
+    myBand.addVenue(secondVenue);
+    List savedBand = myBand.getVenues();
+    assertEquals(2, savedBand.size());
+  }
+
 }

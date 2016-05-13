@@ -16,11 +16,28 @@ public class App {
     get("/", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
       model.put("bands", Band.all());
-      model.put("venues", Venue.all());
+    //  model.put("venues", Venue.all());
       model.put("template", "templates/index.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
+    post("/addBand", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      String bandName = request.queryParams("name");
+      Band newBandName = new Band(bandName);
+      newBandName.save();
+      response.redirect("/");
+      return null;
+    });
+
+    post("/addVenue", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      String venueName = request.queryParams("location");
+      Band newVenueName = new Band(venueName);
+      newVenueName.save();
+      response.redirect("/");
+      return null;
+    });
 
   }
 }
