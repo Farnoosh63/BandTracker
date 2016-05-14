@@ -55,7 +55,54 @@ public class AppTest extends FluentTest {
     bandName.save();
     String url = String.format("http://localhost:4567/addBand/%d", bandName.getId());
     goTo(url);
-    assertThat(pageSource()).contains("Manage your Band Account");
+    assertThat(pageSource()).contains("Changing your band name is so easy");
   }
+
+  @Test
+  public void editBandName() {
+    Band bandName = new Band ("The Beatles");
+    bandName.save();
+    String url = String.format("http://localhost:4567/addBand/%d", bandName.getId());
+    goTo(url);
+    fill("#editBand").with ("Empire of the sun");
+    submit("#editBandName");
+    String listBands = String.format("http://localhost:4567/");
+    goTo(listBands);
+    assertThat(pageSource()).contains("Empire of the sun");
+  }
+
+  @Test
+  public void addVenueToBandPage() {
+    Band bandName = new Band ("The Beatles");
+    bandName.save();
+    Venue venueName = new Venue ("Crystal Ballroom");
+    venueName.save();
+    String url = String.format("http://localhost:4567/addBand/%d", bandName.getId());
+    goTo(url);
+    click("#addVenueToBand");
+    String addVenueToBand = String.format("http://localhost:4567/addVenueToBand/%d", bandName.getId());
+    goTo(addVenueToBand);
+    assertThat(pageSource()).contains("Crystal Ballroom");
+  }
+
+  @Test
+  public void addVenueToBandPost() {
+    Band bandName = new Band ("The Beatles");
+    bandName.save();
+    Venue venueName = new Venue ("Crystal Ballroom");
+    venueName.save();
+    String url = String.format("http://localhost:4567/addBand/%d", bandName.getId());
+    goTo(url);
+    click("#addVenueToBand");
+    String addVenueToBand = String.format("http://localhost:4567/addVenueToBand/%d", bandName.getId());
+    goTo(addVenueToBand);
+    find("#venueId").click();
+    String addVenueToBandchecked = String.format("http://localhost:4567/addVenueToBand/%d", bandName.getId());
+    goTo(addVenueToBandchecked);
+    assertThat(pageSource()).contains("Crystal Ballroom");
+
+  }
+
+
 
 }

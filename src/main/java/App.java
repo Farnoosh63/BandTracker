@@ -4,7 +4,7 @@ import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 import static spark.Spark.*;
 import java.util.List;
-
+import java.util.Arrays;
 import java.util.ArrayList;
 
 public class App {
@@ -46,6 +46,36 @@ public class App {
       model.put("template", "templates/manageBand.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
+
+    post("/addBand/:id/edit", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      Band bandClicked = Band.find(Integer.parseInt(request.params(":id")));
+      String newNameForBand = request.queryParams("editBand");
+      bandClicked.update(newNameForBand);
+      model.put("bands", bandClicked);
+      response.redirect("/");
+      return null;
+    });
+
+    get("/addVenueToBand/:id", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      Band bandClicked = Band.find(Integer.parseInt(request.params(":id")));
+      model.put("band",bandClicked);
+      model.put("allVenues", Venue.all());
+      model.put("template", "templates/addVenueToBand.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    post("/addVenueToBand/:id", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      String venueChecked = request.queryParams("venueId");
+      Venue venue = Venue.find(Integer.parseInt(venueChecked));
+      Band band = Band.find(Integer.parseInt(request.params(":id")));
+      band.addVenue(venue);
+      String url = String.format("/addVenueToBand/%d", band.getId());
+      response.redirect(url);
+      return null;
+    });
 
 
 

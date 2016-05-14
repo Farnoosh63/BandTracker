@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <body>
-  <h1>Manage your Band Account</h1>
-  <h3>Changing your band name is so easy, You only need to fill up this form $band.getName() </h3>
+  <h1>Manage $band.getName() Account</h1>
+  <h5>Changing your band name is so easy, You only need to fill up this form </h5>
   <form action="/addBand/$band.getId()/edit" method="post">
     <input id="bandId" name="bandId" type="hidden" value="$band.getId()">
     <label for="editBand">Update to: </label>
@@ -11,11 +11,14 @@
     <button type="submit" class="btn btn-info" id="editBandName">Edit Band Name</button>
   </form>
 
-  <h3>would you like to add a venue to this band? it is easier that ever!</h3>
-  <a href="/addVenueToBand/$band.getId()" class="btn btn-warning" role="button">Add Venue to $band.getName()</a>
+  <h5>would you like to add a venue to this band? it is easier that ever!</h5>
+  <a href="/addVenueToBand/$band.getId()" class="btn btn-warning" id="addVenueToBand" role="button">Add Venue to $band.getName()</a>
 
-  <h3>Sorry to see you are deleting your band from the App. Hope to see you back soon!</h3>
+  <h5>Sorry to see you are deleting your band from the App. Hope to see you back soon!</h5>
   <a href="/addBand/$band.getId()/delete" class="btn btn-danger" role="button">GoodBye $band.getName()</a>
+  <br><br/>
+
+  
   <br><br/>
   <a href="/">Go back Home</a>
 </body>
