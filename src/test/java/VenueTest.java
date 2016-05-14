@@ -7,19 +7,19 @@ import java.util.List;
 public class VenueTest {
 
   @Rule
- public DatabaseRule database = new DatabaseRule();
+  public DatabaseRule database = new DatabaseRule();
 
 
- @Test
- public void Venue_instantiatesCorrectly_true(){
-   Venue myVenue = new Venue("Crystal Ballroom");
-   assertEquals(true, myVenue instanceof Venue);
+  @Test
+  public void Venue_instantiatesCorrectly_true(){
+    Venue myVenue = new Venue("Crystal Ballroom");
+    assertEquals(true, myVenue instanceof Venue);
   }
 
- @Test
- public void Venue_getNameCorrectly_String(){
-   Venue myVenue = new Venue("Crystal Ballroom");
-   assertEquals("Crystal Ballroom", myVenue.getName());
+  @Test
+  public void Venue_getNameCorrectly_String(){
+    Venue myVenue = new Venue("Crystal Ballroom");
+    assertEquals("Crystal Ballroom", myVenue.getName());
   }
 
   @Test
@@ -40,7 +40,7 @@ public class VenueTest {
     assertEquals(0, myVenue.getId());
   }
 
- @Test
+  @Test
   public void Venue_getTwoSameLocation_true(){
     Venue firstVenue = new Venue("Crystal Ballroom");
     Venue secondVenue = new Venue("Crystal Ballroom");
@@ -91,4 +91,4 @@ public class VenueTest {
   }
 
 
- }
+}

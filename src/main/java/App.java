@@ -77,18 +77,44 @@ public class App {
       return null;
     });
 
+    get("/addBand/:id/delete", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      int bandId = Integer.parseInt(request.params(":id"));;
+      Band band = Band.find(bandId);
+      band.delete();
+      response.redirect("/");
+      return null;
+    });
 
+    get("/manageVenue/:id", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      Venue venueClicked = Venue.find(Integer.parseInt(request.params(":id")));
+      model.put("venue", venueClicked);
+      model.put("template", "templates/manageVenue.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
 
-    // get("/search", (request, response) -> {
-    //   Map<String, Object> model = new HashMap<String, Object>();
-    //   String bandNameSelect = request.queryParams("bandId");
-    //   Band searchedBand = Band.find(Integer.parseInt(bandNameSelect));
-    //   searchedBand.getVenues();
-    //   model.put("allbands", Band.all());
-    //   model.put("venues", searchedBand);
-    //   model.put("template", "templates/index.vtl");
-    //   return new ModelAndView(model, layout);
-    // }, new VelocityTemplateEngine());
+    get("/manageVenue/:id/delete", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      int venueId = Integer.parseInt(request.params(":id"));;
+      Venue venue = Venue.find(venueId);
+      venue.delete();
+      response.redirect("/");
+      return null;
+    });
+
+    get("/search", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      if(request.queryParams().contains("bandId")) {
+        String bandNameSelect = request.queryParams("bandId");
+        Band searchedBand = Band.find(Integer.parseInt(bandNameSelect));
+        List<Venue> venueSearched = searchedBand.getVenues();
+        model.put("venues", venueSearched);
+      }
+      model.put("allbands", Band.all());
+      model.put("template", "templates/search.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
 
   }
 }

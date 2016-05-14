@@ -97,12 +97,53 @@ public class AppTest extends FluentTest {
     String addVenueToBand = String.format("http://localhost:4567/addVenueToBand/%d", bandName.getId());
     goTo(addVenueToBand);
     find("#venueId").click();
-    String addVenueToBandchecked = String.format("http://localhost:4567/addVenueToBand/%d", bandName.getId());
-    goTo(addVenueToBandchecked);
+    click("#addVenueToBand");
     assertThat(pageSource()).contains("Crystal Ballroom");
-
   }
 
+  @Test
+  public void deleteBand() {
+    Band bandName = new Band ("The Beatles");
+    bandName.save();
+    String url = String.format("http://localhost:4567/addBand/%d", bandName.getId());
+    goTo(url);
+    click("#deleteBand");
+    String homePage = String.format("http://localhost:4567/");
+    goTo(homePage);
+    assertThat(pageSource()).doesNotContain("The Beatles");
+  }
 
+  @Test
+  public void deleteVenue() {
+    Venue venueName = new Venue ("Crystal Ballroom");
+    venueName.save();
+    String url = String.format("http://localhost:4567/manageVenue/%d", venueName.getId());
+    goTo(url);
+    click("#deleteVenue");
+    String homePage = String.format("http://localhost:4567/");
+    goTo(homePage);
+    assertThat(pageSource()).doesNotContain("Crystal Ballroom");
+  }
 
+  @Test
+  public void searchVenuesforABand() {
+    Band bandName = new Band ("The Beatles");
+    bandName.save();
+    Venue venueName = new Venue ("Crystal Ballroom");
+    venueName.save();
+    String url = String.format("http://localhost:4567/addBand/%d", bandName.getId());
+    goTo(url);
+    click("#addVenueToBand");
+    String addVenueToBand = String.format("http://localhost:4567/addVenueToBand/%d", bandName.getId());
+    goTo(addVenueToBand);
+    find("#venueId").click();
+    click("#addVenueToBand");
+    String homePage = String.format("http://localhost:4567/");
+    goTo(homePage);
+    String search = String.format("http://localhost:4567/search");
+    goTo(search);
+    fillSelect("#bandId").withText("The Beatles");
+    submit("#search-button");
+    assertThat(pageSource()).contains("Crystal Ballroom");
+  }
 }

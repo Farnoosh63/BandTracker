@@ -1,27 +1,28 @@
 <!DOCTYPE html>
 <html>
-  <body>
-    <h1>search</h1>
+<body>
+  <h1>search</h1>
 
-    <p>Here, you can search all the vanues for a band!</p>
+  <p>Here, you can search all the vanues for a band!</p>
 
-    <form action='/search' method='get'>
-      <label for="bandId">Select a band</label>
-      <select id='bandId' name='bandId' type='text'>
-        #foreach($band in $allbands)
-        <option value="$band.getId()"> $band.getName() </option>
-        #end
-      </select>
-      <button id="search-button" type="submit" class="btn btn-info" id ="searchVenue">Search</button>
-    </form>
-
-    #if($venues)
-    <ul>
-      #foreach ($venue in $venues)
-      <li><a href="/venues/$venue.getId()">$venue.getName()</a></li>
+  <form action='/search' method='get'>
+    <label for="bandId">Select a band</label>
+    <select id='bandId' name='bandId' type='text'>
+      #foreach($band in $allbands)
+      <option value="$band.getId()"> $band.getName() </option>
       #end
-    </ul>
-    #end
+    </select>
+    <button id="search-button" type="submit" class="btn btn-info" id ="searchVenue">Search</button>
+  </form>
 
-  </body>
+  #if($venues)
+  <ul>
+    #foreach ($venue in $venues)
+    <li><a href="/manageVenue/$venue.getId()">$venue.getName()</a></li>
+    #end
+  </ul>
+  #end
+  <br><br/>
+  <a href="/">Go back Home</a>
+</body>
 </html>

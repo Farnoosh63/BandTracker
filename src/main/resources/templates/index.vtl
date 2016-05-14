@@ -1,53 +1,53 @@
 <!DOCTYPE html>
 <html>
-  <body>
-    <h1>Brand Tracker App</h1>
-    <div class="jumbotron">
-      <div class = "container">
-        <div class= "row">
-          <div class ="col-lg-6">
-            <form action="/addBand" method="post">
-              <label for="name">Band name: </label>
-              <input id="name" name="name" type="text" required="please enter a band name">
-              <button type="submit" class="btn btn-warning" id="addBand">Add a Band</button>
-            </form>
-            <h5>
-              <ul>
-                #if($bands)
-                  #foreach ($band in $bands)
-                  <li><a href="/addBand/$band.getId()">$band.getName()</a></li>
-                  #end
-                #end
-              </ul>
-            </h5>
-          </div>
+<body>
+  <h1>Brand Tracker App</h1>
+  <div class="jumbotron">
+    <div class = "container">
+      <div class= "row">
+        <div class ="col-lg-6">
+          <form action="/addBand" method="post">
+            <label for="name">Band name: </label>
+            <input id="name" name="name" type="text" required="please enter a band name">
+            <button type="submit" class="btn btn-warning" id="addBand">Add a Band</button>
+          </form>
+          <h5>
+            <ul>
+              #if($bands)
+              #foreach ($band in $bands)
+              <li><a href="/addBand/$band.getId()">$band.getName()</a></li>
+              #end
+              #end
+            </ul>
+          </h5>
+        </div>
 
 
 
-          <div class ="col-lg-6">
-            <form action="/addVenue" method="post">
-              <label for="location">Venue name</label>
-              <input id="location" name="location" type="text" required="please enter a venue location">
-              <button type="submit" class="btn btn-warning" id="addVenue">Add a Venue</button>
-            </form>
-            <h5>
-              <ul>
-                #if($venues)
-                  #foreach ($venue in $venues)
-                  <li><a href="/addVenue/$venue.getId()">$venue.getName()</a></li>
-                  #end
-                #end
-              </ul>
-            </h5>
-          </div>
-          <br><br/>
-          <div class="searchButton">
-            <a href="/search" class="btn btn-lg btn-primary" role="button">search</a>
-          </div>
+        <div class ="col-lg-6">
+          <form action="/addVenue" method="post">
+            <label for="location">Venue name</label>
+            <input id="location" name="location" type="text" required="please enter a venue location">
+            <button type="submit" class="btn btn-warning" id="addVenue">Add a Venue</button>
+          </form>
+          <h5>
+            <ul>
+              #if($venues)
+              #foreach ($venue in $venues)
+              <li><a href="/manageVenue/$venue.getId()">$venue.getName()</a></li>
+              #end
+              #end
+            </ul>
+          </h5>
+        </div>
+        <br><br/>
+        <div class="searchButton">
+          <a href="/search" class="btn btn-lg btn-primary" role="button">search</a>
         </div>
       </div>
-      <img src="http://storiesof.us/bcmedia/Design%20Files/00%20illustrator+ps%20istock+downloads/crowd3.png" class="img-responsive" width="1000" height="500">
     </div>
+    <img src="http://storiesof.us/bcmedia/Design%20Files/00%20illustrator+ps%20istock+downloads/crowd3.png" class="img-responsive" width="1000" height="500">
+  </div>
 
-  </body>
+</body>
 </html>

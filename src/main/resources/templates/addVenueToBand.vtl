@@ -1,36 +1,36 @@
 <!DOCTYPE html>
 <html>
-  <body>
-    <h5>Add a venue to $band.getName():</h5>
+<body>
+  <h5>Add a venue to $band.getName():</h5>
 
-    <form action='/addVenueToBand/$band.getId()' method='post'>
-      <div class="checkbox">
-        <label for="venueId">Select a Venue</label>
-        #if($allVenues)
-          <ul>
-            #foreach($venue in $allVenues)
-              <li><input type="checkbox" value="$venue.getId()" id='venueId' name='venueId'>
-                $venue.getName()
-              </li>
-            #end
-          </ul>
-        #end
-      </label>
-      </div>
-        <button type="submit" id="addVenueToBand" class="btn btn-info">Add venue to this $band.getName()</button>
-    </form>
-    <h5>
+  <form action='/addVenueToBand/$band.getId()' method='post'>
+    <div class="checkbox">
+      <label for="venueId">Select a Venue</label>
+      #if($allVenues)
       <ul>
-        #if($band.getVenues())
-          <h4>List of All Venues for this Band:</h4>
-          #foreach ($venue in $band.getVenues())
-          <li>$venue.getName()</a></li>
-          #end
+        #foreach($venue in $allVenues)
+        <li><input type="checkbox" value="$venue.getId()" id='venueId' name='venueId'>
+          $venue.getName()
+        </li>
         #end
       </ul>
-    </h5>
-    <a href="/" type="button" class="btn btn-success">Go back to home Page</a></p>
-    <br><br/>
-    <a href="/manageBand">Go back to Manage Band</a>
-  </body>
+      #end
+    </label>
+  </div>
+  <button type="submit" id="addVenueToBand" class="btn btn-info">Add venue to this $band.getName()</button>
+</form>
+<h5>
+  <ul>
+    #if($band.getVenues())
+    <h4>List of All Venues for this Band:</h4>
+    #foreach ($venue in $band.getVenues())
+    <li>$venue.getName()</a></li>
+    #end
+    #end
+  </ul>
+</h5>
+<a href="/" type="button" class="btn btn-success">Go back to home Page</a></p>
+<br><br/>
+<a href="/addBand/$band.getId()" type="button" class="btn btn-info">Go back to Manage Band</a>
+</body>
 </html>

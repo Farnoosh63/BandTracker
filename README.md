@@ -1,16 +1,16 @@
-# _Hair Salon App_
+# _Band Tracker App_
 
 #### _Epicodus Java class, May 2016_
 
 #### **By Farnoosh Johnson**
 
-###### _[Java database basics](https://www.learnhowtoprogram.com/java/java-database-basics/database-basics-independent-project-c78ee055-12ad-4223-8b28-0ea3da1d0762)_
+###### _[Advanced databases](https://www.learnhowtoprogram.com/java/advanced-databases/advanced-databases-independent-project)_
 
-###### **Hair Salon, code review number 3**
+###### **Band Tracker, code review number 4**
 
 ## __Description__
 
-###### This is simple custom-made Hair Salon application that receive the stylist name from the user, let the user add unlimited clients for each stylists in a different page. The homepage of the app list out all of the stylists, and user can click on each stylist name to view all of clients for the selected stylist. the input is required to be filled in order the submit button redirect to the next page.This app does not have the ability to let user whether any word is duplicated.
+###### This is application to track Bands and their venues. User is able to add, update, delete and see list of all the bands.Input are only Band Name and Venue Locations, but user is able to add venues to each Band. The homepage of the app list out all of the Bands and Venues and user can click on each clickable inputs to direct to another page in order to delete that entry.The input is required to be filled in order the submit button.This app does not have the ability to let user whether any bans or venues are duplicated.
 ######Below objective has been met in this App;
 1. Test have complete coverage for the behaviors that need to be tested
 2. tests are passing
@@ -20,16 +20,16 @@
 6. At least one Integration spec is in place for each page
 7. Use of RESTful routes in Spark
 8. An instance of one class appears in the method of another class
-9. Execution of CRUD functionality in methods and routes
-10. Recource names will be clients and stylists
+9. Execution of CRUD functionality in methods and routes, That includes: Create, Read (list of bands and band details page), Update and Delete
+10. Recource names will be Bands and Venues
 11. Spark routes process GET and POST requests/responses successfully
-12. Correct set up of a one-to-many relationship in a database
+12. Correct set up of a many-to-many relationship in a database
 13. README file include the details of your database names and tables
 > You may use this application as an example to show the proficiency of a level 2 student in Epicodus.
 Setup:
 
 This website is designed with bootstrap _version 3.3.6_ and including following files:
-* four different template files for index, layout and clients form and stylists
+* six different template files for index, layout and addVenueToBand and manageBand, ManageVenue and search
 * one custom-made CSS files
 * two java testing file for back-end and one for integration test to test the front-end
 * two java files for the method two different classes
@@ -39,12 +39,11 @@ This website is designed with bootstrap _version 3.3.6_ and including following 
 * one velocityTemplateEngine
 * .ignore file
 * build gradle file
-* Procfile for deploying Spark apps to Heroku
 * one .sql file for database backup
 
 ###### Thanks
 
-**Accessing to the remote repository on account :** [farnoosh63](https://github.com/Farnoosh63/HairSalon.git)
+**Accessing to the remote repository on account :** [farnoosh63](https://github.com/Farnoosh63/BandTracker.git)
 
 **Accessing to github pages for this application :**
 > there is no github page created for this app

@@ -31,13 +31,13 @@ public class Venue {
     try(Connection con = DB.sql2o.open()) {
       String sql = "INSERT INTO venues (location) VALUES (:location)";
       this.id = (int) con.createQuery(sql, true)
-        .addParameter("location", this.location)
-        .executeUpdate()
-        .getKey();
+      .addParameter("location", this.location)
+      .executeUpdate()
+      .getKey();
     }
   }
 
-@Override
+  @Override
   public boolean equals(Object secondVenue) {
     if(!(secondVenue instanceof Venue)){
       return false;
@@ -59,26 +59,26 @@ public class Venue {
   }
 
   public void update(String newVenue) {
-  try(Connection con = DB.sql2o.open()) {
-    String sql = "UPDATE venues SET location = :location WHERE id = :id";
-    con.createQuery(sql)
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "UPDATE venues SET location = :location WHERE id = :id";
+      con.createQuery(sql)
       .addParameter("location", newVenue)
       .addParameter("id", this.id)
       .executeUpdate();
+    }
   }
-}
 
   public void delete() {
     try(Connection con = DB.sql2o.open()) {
       String deleteQuery = "DELETE FROM venues WHERE id = :id;";
       con.createQuery(deleteQuery)
-        .addParameter("id", this.getId())
-        .executeUpdate();
+      .addParameter("id", this.getId())
+      .executeUpdate();
 
       String joinDeleteQuery = "DELETE FROM bands_venues WHERE venueid = :venueid";
-        con.createQuery(joinDeleteQuery)
-          .addParameter("venueid", this.getId())
-          .executeUpdate();
+      con.createQuery(joinDeleteQuery)
+      .addParameter("venueid", this.getId())
+      .executeUpdate();
     }
   }
 
