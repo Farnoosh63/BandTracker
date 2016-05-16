@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <body>
-  <h5>Add a venue to $band.getName():</h5>
+  <h4>Add a venue to $band.getName():</h4>
 
   <form action='/addVenueToBand/$band.getId()' method='post'>
     <div class="checkbox">
@@ -19,16 +19,14 @@
   </div>
   <button type="submit" id="addVenueToBand" class="btn btn-info">Add venue to this $band.getName()</button>
 </form>
-<h5>
-  <ul>
-    #if($band.getVenues())
-    <h4>List of All Venues for this Band:</h4>
+<h4>List of All Venues for this Band:</h4>
+<ol>
+  #if($band.getVenues())
     #foreach ($venue in $band.getVenues())
-    <li>$venue.getName()</a></li>
+      <li>$venue.getName()</a></li>
     #end
-    #end
-  </ul>
-</h5>
+  #end
+</ol>
 <a href="/" type="button" class="btn btn-success">Go back to home Page</a></p>
 <br><br/>
 <a href="/addBand/$band.getId()" type="button" class="btn btn-info">Go back to Manage Band</a>
