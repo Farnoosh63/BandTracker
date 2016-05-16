@@ -68,10 +68,13 @@ public class App {
 
     post("/addVenueToBand/:id", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
-      String venueChecked = request.queryParams("venueId");
-      Venue venue = Venue.find(Integer.parseInt(venueChecked));
+      String[] venueCheckedArray = request.queryParamsValues("venueId");
+        for (int i = 0; i <venueCheckedArray.length; i++ ) {
+          Venue venue = Venue.find(Integer.parseInt(venueCheckedArray[i]));
+          Band band = Band.find(Integer.parseInt(request.params(":id")));
+          band.addVenue(venue);
+        }
       Band band = Band.find(Integer.parseInt(request.params(":id")));
-      band.addVenue(venue);
       String url = String.format("/addVenueToBand/%d", band.getId());
       response.redirect(url);
       return null;

@@ -5,24 +5,31 @@
 
   <p>Here, you can search all the vanues for a band!</p>
 
-  <form action='/search' method='get'>
-    <label for="bandId">Select a band</label>
-    <select id='bandId' name='bandId' type='text'>
-      #foreach($band in $allbands)
-      <option value="$band.getId()"> $band.getName() </option>
+  <form class="navbar-form navbar-left" role="search">
+    <form action='/search' method='get'>
+      <div class="form-group">
+        <label for="bandId">Select a band</label>
+        <select id='bandId' name='bandId' type='text' class="form-control">
+          <option value=" "> Select a band here </option>
+          #foreach($band in $allbands)
+          <option value="$band.getId()"> $band.getName() </option>
+          #end
+        </select>
+          <button id="search-button" type="submit" class="btn btn-info" id ="searchVenue" aria-label="Left Align" placeholder="search">Search</button>
+
+      </div>
+    </form>
+
+    #if($venues)
+    <ul>
+      #foreach ($venue in $venues)
+      <li><a href="/manageVenue/$venue.getId()">$venue.getName()</a></li>
       #end
-    </select>
-    <button id="search-button" type="submit" class="btn btn-info" id ="searchVenue">Search</button>
+    </ul>
+    #end
+    <br><br/>
+    <a href="/">Go back Home</a>
   </form>
 
-  #if($venues)
-  <ul>
-    #foreach ($venue in $venues)
-    <li><a href="/manageVenue/$venue.getId()">$venue.getName()</a></li>
-    #end
-  </ul>
-  #end
-  <br><br/>
-  <a href="/">Go back Home</a>
 </body>
 </html>
